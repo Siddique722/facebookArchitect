@@ -2,6 +2,7 @@ import 'package:archi/Controller/constants/app_assets/icons.dart';
 import 'package:archi/Controller/constants/app_assets/images.dart';
 import 'package:archi/Controller/constants/colors/app-colors.dart';
 import 'package:archi/View/gradiebt-container.dart';
+import 'package:archi/View/startingScreens/onboardingScreens/onboarding-screen.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -35,8 +36,8 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home:
-      GradientClass()
+      home:OnBoardingScreen()
+      //GradientClass()
       //const MyHomePage(title: 'Flutter Demo Home Page'),
     );
   }
