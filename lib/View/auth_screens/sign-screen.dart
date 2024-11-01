@@ -1,5 +1,6 @@
 import 'package:archi/Controller/components/image-component.dart';
 import 'package:archi/Controller/components/primary-text-component.dart';
+import 'package:archi/Controller/components/text-form-field-widget.dart';
 import 'package:archi/Controller/constants/app_assets/images.dart';
 import 'package:archi/Controller/constants/colors/app-colors.dart';
 import 'package:archi/View/auth_screens/login-screen.dart';
@@ -28,20 +29,17 @@ TextEditingController passwordController=TextEditingController();
           ImageComponet(image: AppImages.signupImage),
         SizedBox(height:10),
            PrimaryTextWidget(text: 'Register Your Self'),
-          Container(
-            margin: EdgeInsets.symmetric(horizontal: 20),
-            decoration: BoxDecoration(
-              color: AppColors.appPrimaryColor,
-              borderRadius: BorderRadius.circular(5)
-            ),
-            child: TextFormField(
-              decoration: InputDecoration(
-                hintText: 'Enter your email:'
-                    ,hintStyle: TextStyle(color: Colors.white),
-                prefixIcon: Icon(Icons.mail,color: Colors.white,)
+         TextFormWidget(hintText: 'Enter Your Email:', icon: Icons.mail, controller: _emailController),
+         TextFormWidget(hintText: 'Enter Your Password:', icon: Icons.lock_open, controller: passwordController),
+            Container(
+              height: 40,
+              width: 200,
+              decoration: BoxDecoration(
+                color: AppColors.appPrimaryColor,
+                borderRadius: BorderRadius.circular(100)
               ),
-            ),
-          )
+              child: Center(child: Text('Login',style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold),),),
+            )
         ],),
       ),
 

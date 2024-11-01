@@ -15,7 +15,7 @@ class TextFormWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return     Container(
-      margin: EdgeInsets.symmetric(horizontal: 20),
+      margin: EdgeInsets.symmetric(horizontal: 20,vertical: 5),
       decoration: BoxDecoration(
           color: AppColors.appPrimaryColor,
           borderRadius: BorderRadius.circular(5)
@@ -23,6 +23,7 @@ class TextFormWidget extends StatelessWidget {
       child: TextFormField(
         controller: controller,
         decoration: InputDecoration(
+          border: InputBorder.none,
             hintText: hintText,
             hintStyle: TextStyle(color: Colors.white),
             prefixIcon: Icon(icon,color: Colors.white,)
