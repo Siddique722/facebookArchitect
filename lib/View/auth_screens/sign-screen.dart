@@ -1,3 +1,4 @@
+import 'package:archi/Controller/components/apploader/apploader.dart';
 import 'package:archi/Controller/components/button-widget.dart';
 import 'package:archi/Controller/components/image-component.dart';
 import 'package:archi/Controller/components/primary-text-component.dart';
@@ -19,7 +20,35 @@ class RegistraytionScreen extends StatefulWidget {
 class _RegistraytionScreenState extends State<RegistraytionScreen> {
 TextEditingController _emailController=TextEditingController();
 TextEditingController passwordController=TextEditingController();
- @override
+
+bool isLoading=false;
+Future<void> registration()async{
+  isLoading=true;
+  setState(() {
+
+  });
+  await FirebaseAuth.instance.createUserWithEmailAndPassword(
+      email: _emailController.text.trim(),
+      password: passwordController.text.trim())
+      .then((value){
+      //successfull snack bar
+    print('Account created successfully');
+    isLoading=false;
+    setState(() {
+
+    });
+    Navigator.push(context, CupertinoPageRoute(builder: (context)=>LoginSCreen()));
+
+  }).onError((error, value){
+    isLoading=false;
+    setState(() {
+
+    });
+    // error snackbar
+    print('Error:$error');
+  });
+}
+@override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
@@ -33,7 +62,11 @@ TextEditingController passwordController=TextEditingController();
          TextFormWidget(hintText: 'Enter Your Email:', icon: Icons.mail, controller: _emailController),
          TextFormWidget(hintText: 'Enter Your Password:', icon: Icons.lock_open, controller: passwordController),
           SizedBox(height: 20,),
-            ButtonWidget(text: 'SignUp', ontap: (){}),
+          isLoading?AppLoader():  ButtonWidget(text: 'SignUp', ontap: (){
+
+             // function calling
+              registration();
+            }),
             SizedBox(height: 10,),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
