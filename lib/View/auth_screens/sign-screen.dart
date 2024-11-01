@@ -1,3 +1,4 @@
+import 'package:archi/Controller/components/button-widget.dart';
 import 'package:archi/Controller/components/image-component.dart';
 import 'package:archi/Controller/components/primary-text-component.dart';
 import 'package:archi/Controller/components/text-form-field-widget.dart';
@@ -31,15 +32,20 @@ TextEditingController passwordController=TextEditingController();
            PrimaryTextWidget(text: 'Register Your Self'),
          TextFormWidget(hintText: 'Enter Your Email:', icon: Icons.mail, controller: _emailController),
          TextFormWidget(hintText: 'Enter Your Password:', icon: Icons.lock_open, controller: passwordController),
-            Container(
-              height: 40,
-              width: 200,
-              decoration: BoxDecoration(
-                color: AppColors.appPrimaryColor,
-                borderRadius: BorderRadius.circular(100)
-              ),
-              child: Center(child: Text('Login',style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold),),),
-            )
+          SizedBox(height: 20,),
+            ButtonWidget(text: 'SignUp', ontap: (){}),
+            SizedBox(height: 10,),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+              Text('Already have an account?'),
+              SizedBox(width: 3,),
+              InkWell(
+                   onTap: (){
+                     Navigator.push(context, CupertinoPageRoute(builder: (context)=>LoginSCreen()));
+                   },
+                  child: PrimaryTextWidget(text: 'Login'))
+            ],)
         ],),
       ),
 
