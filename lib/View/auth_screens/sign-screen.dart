@@ -1,3 +1,7 @@
+import 'package:archi/Controller/components/image-component.dart';
+import 'package:archi/Controller/components/primary-text-component.dart';
+import 'package:archi/Controller/constants/app_assets/images.dart';
+import 'package:archi/Controller/constants/colors/app-colors.dart';
 import 'package:archi/View/auth_screens/login-screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
@@ -11,13 +15,35 @@ class RegistraytionScreen extends StatefulWidget {
 }
 
 class _RegistraytionScreenState extends State<RegistraytionScreen> {
-
-  TextEditingController _emailController=TextEditingController();
-  TextEditingController _passwordController=TextEditingController();
-bool isLoading=false;
-  @override
+TextEditingController _emailController=TextEditingController();
+TextEditingController passwordController=TextEditingController();
+ @override
   Widget build(BuildContext context) {
     return Scaffold(
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+
+          ImageComponet(image: AppImages.signupImage),
+        SizedBox(height:10),
+           PrimaryTextWidget(text: 'Register Your Self'),
+          Container(
+            margin: EdgeInsets.symmetric(horizontal: 20),
+            decoration: BoxDecoration(
+              color: AppColors.appPrimaryColor,
+              borderRadius: BorderRadius.circular(5)
+            ),
+            child: TextFormField(
+              decoration: InputDecoration(
+                hintText: 'Enter your email:'
+                    ,hintStyle: TextStyle(color: Colors.white),
+                prefixIcon: Icon(Icons.mail,color: Colors.white,)
+              ),
+            ),
+          )
+        ],),
+      ),
 
     );
     //   Scaffold(

@@ -18,7 +18,7 @@ class AppImages
   // todo images-----
 static String splashImage='lib/Controller/assets/todoimages/splash.png';
 static String loginImage='lib/Controller/assets/todoimages/login.png';
-static String signupImage='lib/Controller/assets/todoimages/signup.png';
+static String signupImage='lib/Controller/assets/todoimages/signup.jpg';
 
 
 
