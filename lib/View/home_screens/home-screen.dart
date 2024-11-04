@@ -1,4 +1,3 @@
-
 import 'package:archi/Controller/constants/colors/app-colors.dart';
 import 'package:archi/View/auth_screens/login-screen.dart';
 import 'package:archi/View/home_screens/insertDaraScreen/insert-data.dart';
@@ -54,6 +53,16 @@ class HomeScreen extends StatelessWidget {
              return  Card(
                color: AppColors.appPrimaryColor,
                child: ListTile(
+                 onLongPress: (){
+
+                 },
+                 onTap: ()async{
+                   await FirebaseFirestore.instance.collection('Todo').doc(data.docs[index]['id']).delete();
+                 },
+                 leading: CircleAvatar(
+                   backgroundColor: Colors.white,
+                   child: Text(data.docs[index]['id'],style: TextStyle(color: AppColors.appPrimaryColor),),
+                 ),
                  title: Text(data.docs[index]['title']),
                  subtitle: Text(data.docs[index]['description']),
                ),
