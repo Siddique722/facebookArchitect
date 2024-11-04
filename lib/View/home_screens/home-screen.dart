@@ -52,6 +52,7 @@ class HomeScreen extends StatelessWidget {
             return ListView.builder(
               itemCount: data.size,
               itemBuilder: (context, index) {
+                String docid=data.docs[index]['id'];
                 return Card(
                   color: AppColors.appPrimaryColor,
                   child: ListTile(
@@ -59,19 +60,21 @@ class HomeScreen extends StatelessWidget {
                       Navigator.push(
                           context,
                           CupertinoDialogRoute(
-                              builder: (context) => UpadtetData(),
+                              builder: (context) => UpadtetData(
+                                docid: docid,
+                              ),
                               context: context));
                     },
                     onTap: () async {
                       await FirebaseFirestore.instance
                           .collection('Todo')
-                          .doc(data.docs[index]['id'])
+                          .doc(docid)
                           .delete();
                     },
                     leading: CircleAvatar(
                       backgroundColor: Colors.white,
                       child: Text(
-                        data.docs[index]['id'],
+                        docid,//data.docs[index]['id'],
                         style: TextStyle(color: AppColors.appPrimaryColor),
                       ),
                     ),
