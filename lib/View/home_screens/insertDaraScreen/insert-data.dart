@@ -7,7 +7,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
 class InsertData extends StatefulWidget {
-  const InsertData({super.key});
+  String userEmail;
+   InsertData({super.key, required this.userEmail});
 
   @override
   State<InsertData> createState() => _InsertDataState();
@@ -27,7 +28,7 @@ class _InsertDataState extends State<InsertData> {
       });
       String id=DateTime.now().second.toString();//millisecondsSinceEpoch.toString();
 
-      await FirebaseFirestore.instance.collection('Todo')
+      await FirebaseFirestore.instance.collection(widget.userEmail)
           .doc(id)
           .set({
         //key :  value

@@ -8,7 +8,12 @@ import 'package:flutter/material.dart';
 
 class UpadtetData extends StatefulWidget {
   String docid;
-   UpadtetData({super.key,required this.docid});
+  String title;
+  String descriptions;
+  String userEmail;
+   UpadtetData({super.key,required this.docid,
+     required this.userEmail,
+     required this.title, required this.descriptions});
 
   @override
   State<UpadtetData> createState() => _UpadtetDataState();
@@ -17,6 +22,15 @@ class UpadtetData extends StatefulWidget {
 class _UpadtetDataState extends State<UpadtetData> {
   TextEditingController titleController=TextEditingController();
   TextEditingController descriptionController=TextEditingController();
+// automatically call the function when we enter the state full screen
+  // init satet  function------initial stae
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    titleController.text=widget.title;
+    descriptionController.text=widget.descriptions;
+  }
 
   // function for insert data into real time data base
 
@@ -27,7 +41,7 @@ class _UpadtetDataState extends State<UpadtetData> {
       setState(() {
 
       });
-      await FirebaseFirestore.instance.collection('Todo').doc(widget.docid).update({
+      await FirebaseFirestore.instance.collection(widget.userEmail).doc(widget.docid).update({
         'title':titleController.text,
         'description':descriptionController.text,
         'id':widget.docid
